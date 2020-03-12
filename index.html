@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin's White Noise App</title>
+
+    <!-- CDN for Bootstrap and Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5263b55500.js" crossorigin="anonymous"></script>
+
+    <!--Local Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <!-- Play controls -->
+    <section class="global-controls text-center shadow-sm">
+            <input id="global-volume" type="range" min="0" max="100" value="100" class="invisible">  
+            <i id="global-volume-icon" class="fas fa-volume-up pl-2 pr-2" data-toggle="tooltip" data-placement="auto" title="Volume"></i>
+            <div class="play-pause-container d-inline">
+                <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="30" r="25" stroke="rgba(255, 255, 255, 0.6)" stroke-width="4"></circle>
+                </svg>
+                <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle id="moving-outline" class="invisible" cx="30" cy="30" r="25" stroke="#FFFFFF" stroke-width="4"></circle>
+                </svg>
+                <i class="fas fa-play pl-2 pr-3" id="play-pause" data-toggle="tooltip" data-placement="auto" title="Play"></i>
+            </div>
+            
+            <i class="fas fa-stopwatch" id="timer-icon" data-toggle="tooltip" data-placement="auto" title="Timer"></i>
+    </section>
+    
+    <!-- Presets Menu -->
+    <div class="presets-controls">
+        <button class="btn presets-button" type="button" id="presets-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-list-ul"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="presets-button">
+          <a class="dropdown-item playlist" data-playlist="rain,thunder,wind" data-playlist-volume="80,30,10">Storm</a>
+          <a class="dropdown-item playlist" data-playlist="fire,forest" data-playlist-volume="80, 20">Campfire</a>
+          <a class="dropdown-item playlist" data-playlist="night,fan" data-playlist-volume="50,30">Summer Night</a>
+        </div>
+    </div>
+
+    <!-- Sound Grid -->
+    <section class="sound-grid mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 text-center">
+                    <i id='rain-icon' class="fas fa-cloud-rain sound-icon shadow-sm" data-sound="rain" data-color="#4269f5" data-toggle="tooltip" data-placement="auto" title="Rain"></i>
+                    <input id="rain-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-sound="rain">
+                    <audio id="rain-audio" src='./sounds/light-rain.mp3' loop></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='thunder-icon' class="fas fa-bolt sound-icon shadow-sm" data-sound="thunder" data-color="rgb(102, 102, 204)" data-toggle="tooltip" data-placement="auto" title="Thunder"></i>
+                    <input id="thunder-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="thunder-audio" src='./sounds/thunder.mp3' loop></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='wind-icon' class="fas fa-wind sound-icon shadow-sm" data-sound="wind" data-color="#ccffff" data-toggle="tooltip" data-placement="auto" title="Wind"></i>
+                    <input id="wind-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="wind-audio" src='./sounds/wind.mp3' loop></audio>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-center">
+                    <i id='fire-icon' class="fas fa-fire-alt sound-icon shadow-sm" data-sound="fire" data-color="#ff5050" data-toggle="tooltip" data-placement="auto" title="Fire"></i>
+                    <input type="range" id="fire-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="fire-audio" src='./sounds/fire.mp3'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='forest-icon' class="fas fa-tree sound-icon shadow-sm" data-sound="forest" data-color="#99ff99" data-toggle="tooltip" data-placement="auto" title="Forest"></i>
+                    <input type="range" id="forest-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="forest-audio" src='./sounds/forest.mp3'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='fan-icon' class="fas fa-fan sound-icon shadow-sm" data-sound="fan" data-color="#ffffb3" data-toggle="tooltip" data-placement="auto" title="Fan"></i>
+                    <input type="range" id="fan-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="fan-audio" src='./sounds/fan.mp3'></audio>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-center">
+                    <i id='water-icon' class="fas fa-water sound-icon shadow-sm" data-sound="water" data-color="#ffcc99" data-toggle="tooltip" data-placement="auto" title="Beach"></i>
+                    <input type="range" id="water-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="water-audio" src='./sounds/beach.mp3' loop volume='0'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='night-icon' class="fas fa-moon sound-icon shadow-sm" data-sound="night" data-color="#595959" data-toggle="tooltip" data-placement="auto" title="Night"></i>
+                    <input type="range" id="night-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="night-audio" src='./sounds/night.mp3'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='whitenoise-icon' class="fas fa-align-center sound-icon shadow-sm" data-sound="whitenoise" data-color="#e6e6e6" data-toggle="tooltip" data-placement="auto" title="White Noise"></i>
+                    <input type="range" id="whitenoise-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="whitenoise-audio" src='./sounds/whitenoise.mp3'></audio>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-center">
+                    <i id='car-icon' class="fas fa-car-side sound-icon shadow-sm" data-sound="car" data-color="" data-toggle="tooltip" data-placement="auto" title="Car"></i>
+                    <input type="range" id="car-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="car-audio" src='./sounds/car.mp3' loop volume='0'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='train-icon' class="fas fa-train sound-icon shadow-sm" data-sound="train" data-color="" data-toggle="tooltip" data-placement="auto" title="Train"></i>
+                    <input type="range" id="train-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="train-audio" src='./sounds/train.mp3'></audio>
+                </div>
+                <div class="col-4 text-center">
+                    <i id='coffeeshop-icon' class="fas fa-mug-hot sound-icon shadow-sm" data-sound="coffeeshop" data-color="" data-toggle="tooltip" data-placement="auto" title="Coffee Shop"></i>
+                    <input type="range" id="coffeeshop-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <audio id="coffeeshop-audio" src='./sounds/coffeeshop.mp3'></audio>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="about">
+        <i class="far fa-question-circle" id="about-icon" data-toggle="tooltip" data-target="#about-modal" data-placement="auto" title="About"></i>
+    </div>
+
+    <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="aboutModalTitle">Credits</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Created by Kevin Otero</li>
+                    <li>Sound effects obtained from <a href="https://www.zapsplat.com">Zapsplat.com</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ><a href="https://github.com/oterocornielkevin/whitenoiseapp">View Source</a></button> <!-- TODO: Insert a link to github -->
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="timer-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="timer-modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="aboutModalTitle">Set a timer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <input type="number" class="timer-input form-control" id="timer-hours" name="" min="00" max="24" value="00"/>
+                    <input type="number" class="timer-input form-control" id="timer-minutes" name="" min="00" max="59" value="00"/>
+                    <input type="number" class="timer-input form-control" id="timer-seconds" name="" min="00" max="59" value="00"/>
+                </div>
+                <div id="invalid-timer-feedback" class="invisible">
+                    Please enter a valid timer.
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="timer-reset-button" class="btn btn-secondary" disabled>Reset</button>
+              <button type="button" id="timer-start-button" class="btn btn-primary">Start</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Local JS -->
+    <script src="./app.js"></script>
+</body>
+</html>
