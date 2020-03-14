@@ -3,11 +3,6 @@ $(document).ready(function(){
     //Initializes tooltips.
     $('[data-toggle="tooltip"]').tooltip({'delay': { show: 400, hide: 100 }});
 
-    //Disables keypresses on the timer inputs
-    $('[type="number"]').keypress(function (e) {
-        e.preventDefault();
-    });
-
     const soundList = ['rain', 'thunder', 'wind', 'fire', 'forest', 'fan', 'water', 'night', 'whitenoise', 'car', 'train', 'coffeeshop'];
 
     const outline = document.querySelector('#moving-outline');
@@ -287,7 +282,6 @@ $(document).ready(function(){
         }
     });
 
-
     //Modal Toggles
     $('#about-icon').click(function() {
         $('#about-modal').modal();
@@ -295,6 +289,10 @@ $(document).ready(function(){
 
     $('#timer-icon').click(function() {
         $('#timer-modal').modal();
+        //Disables keypresses on the timer inputs
+        $('.timer-input').keypress(function (e) {
+            e.preventDefault();
+        });
     });
 
 });
