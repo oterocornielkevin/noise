@@ -1,9 +1,5 @@
 # Noise
 A white noise generator program. Can be used to aid in concentration by blocking out other ambient noise.
-
-# Created Using
-  - Bootstrap 4
-  - Howler JS
   
 # Features
   - Play one of twelve included sounds.
@@ -34,4 +30,4 @@ A white noise generator program. Can be used to aid in concentration by blocking
 
 # Credits
   - Created by Kevin Otero
-  - Sounds obtained from Zapsplat.com
+  - Sounds obtained from [Zapsplat.com](https://www.zapsplat.com/)
