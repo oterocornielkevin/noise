@@ -1,6 +1,6 @@
 body {
-    background-color: #ff99ff;
-    transition: all 0.5s ease;
+  background-color: #ff99ff;
+  transition: all 0.5s ease;
 }
 
 button a {
@@ -13,10 +13,10 @@ button a:hover {
 }
 
 .global-controls {
-    margin-left:-130px;
-    padding-top: 5px;
-    padding-bottom: 35px;
-    background-color: rgba(255, 255, 255, 0.1);
+  margin-left:-95px;
+  padding-top: 5px;
+  padding-bottom: 35px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .play-pause-container{
@@ -25,9 +25,9 @@ button a:hover {
 }
 
 .fa-play, .fa-pause {
-    font-size: 25px;
+    font-size: 1.5rem;
     position: relative;
-    top: 0.9rem;
+    top: 1.1rem;
     left: 0.7rem;
 }
 
@@ -36,13 +36,13 @@ button a:hover {
 }
 
 .fa-volume-up, .fa-volume-mute, .fa-stopwatch {
-    font-size: 30px;
+    font-size: 1.5rem;
     position: relative;
     top: 1rem;
 }
 
 #global-volume {
-    padding-bottom: 7px;
+    padding-bottom: 0.5rem;
     background: transparent;
     position: relative;
     top: 1rem;
@@ -56,7 +56,7 @@ button a:hover {
 
 .presets-button {
     color: #FFFFFF;
-    font-size: 25px;
+    font-size: 1.5rem;
     outline: none;
     border: none !important;
     -webkit-box-shadow: none !important;
@@ -65,24 +65,26 @@ button a:hover {
 }
 
 .dropdown-menu {
-    background-color: rgba(255, 203, 255, 0.8);
+    background-color: #ffccff;
     border: none;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 
 .dropdown-menu a {
-    color: rgba(255, 255, 255, 0.75);
     cursor: pointer;
 }
 
 .dropdown-menu a:hover {
     color: #FFFFFF;
-    background-color: rgba(255, 203, 255, 0.95);
     text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 
 #timer-modal-dialog {
     max-width: 250px!important;
+}
+
+.modal-dialog {
+  margin: auto;
 }
 
 .timer-input{
@@ -105,8 +107,8 @@ button a:hover {
 }
 
 .container {
-    padding-left: 17%;
-    padding-right: 17%;
+    padding-left: 8%;
+    padding-right: 8%;
 }
 
 .fas, .far {
@@ -121,15 +123,15 @@ button a:hover {
 
 .sound-icon {
     border-radius: 30%;
-    padding: 20px;
-    min-width: 80px;
+    padding: 15px;
+    min-width: 60px;
     background-color: rgba(255, 255, 255, 0.1);
     margin-top: 0.5rem;
     margin-bottom: 0.25rem;
 }
 
 .row i {
-    font-size: 40px;
+    font-size: 2rem;
 }
 
 .playing{
@@ -139,7 +141,7 @@ button a:hover {
 .about {
     position: fixed;
     bottom: 2%;
-    right: 1%;
+    right: 2%;
 }
 
 .fa-question-circle {
@@ -147,14 +149,14 @@ button a:hover {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-    font-size: 35px;
+    font-size: 1.5rem;
 }
 
 /**Range Input Styles**/
 input[type=range] {
     -webkit-appearance: none;
     width: 100%;
-    max-width: 100px;
+    max-width: 65px;
   }
 
   input[type=range]:focus {
@@ -249,3 +251,80 @@ input[type=range] {
     background: rgba(255, 255, 255, 0.78);
   }
   
+  @media only screen and (min-width: 992px){
+    .global-controls {
+      margin-left:-130px;
+      padding-top: 5px;
+      padding-bottom: 35px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .fa-volume-up, .fa-volume-mute, .fa-stopwatch {
+      font-size: 2rem;
+      position: relative;
+      top: 1rem;
+    }
+
+    .fa-play, .fa-pause {
+      font-size: 1.6rem;
+      position: relative;
+      top: 0.9rem;
+      left: 0.7rem;
+    }
+
+    .dropdown-menu {
+      background-color: rgba(255, 203, 255, 0.8);
+      border: none;
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+    
+    .dropdown-menu a {
+        color: rgba(255, 255, 255, 0.75);
+        cursor: pointer;
+    }
+    
+    .dropdown-menu a:hover {
+        color: #FFFFFF;
+        background-color: rgba(255, 203, 255, 0.95);
+        text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+
+    .container {
+      padding-left: 17%;
+      padding-right: 17%;
+    }
+
+
+    .sound-icon {
+      border-radius: 30%;
+      padding: 20px;
+      min-width: 80px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .row i {
+      font-size: 2.5rem;
+    }
+
+    .about {
+      position: fixed;
+      bottom: 2%;
+      right: 1%;
+    }
+
+    .fa-question-circle {
+      padding: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+      font-size: 2rem;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      max-width: 100px;
+    }
+  }
