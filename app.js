@@ -295,4 +295,8 @@ $(document).ready(function(){
         });
     });
 
+    $('#playlists-button').click(function() {
+        $('#playlist-modal').modal();
+    })
+
 });

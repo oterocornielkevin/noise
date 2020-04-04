@@ -31,15 +31,10 @@
     </section>
     
     <!-- Presets Menu -->
-    <div class="presets-controls">
-        <button class="btn presets-button" type="button" id="presets-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="playlist-controls">
+        <button class="btn playlist-button" type="button" id="playlists-button" data-toggle="tooltip" data-placement="auto" title="Playlists">
             <i class="fas fa-list-ul"></i>
         </button>
-        <div class="dropdown-menu" aria-labelledby="presets-button">
-          <a class="dropdown-item playlist" data-playlist="rain,thunder,wind" data-playlist-volume="80,30,10">Storm</a>
-          <a class="dropdown-item playlist" data-playlist="fire,forest" data-playlist-volume="80, 20">Campfire</a>
-          <a class="dropdown-item playlist" data-playlist="night,fan" data-playlist-volume="50,30">Summer Night</a>
-        </div>
     </div>
 
     <!-- Sound Grid -->
@@ -120,6 +115,7 @@
         <i class="far fa-question-circle" id="about-icon" data-toggle="tooltip" data-target="#about-modal" data-placement="auto" title="About"></i>
     </div>
 
+    <!--About Modal-->
     <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -131,7 +127,7 @@
             </div>
             <div class="modal-body">
                 <ul>
-                    <li>Created by Kevin Otero</li>
+                    <li>Created by <a href="http://www.kevinotero.tech">Kevin Otero</a></li>
                     <li>Sound effects obtained from <a href="https://www.zapsplat.com">Zapsplat.com</a></li>
                 </ul>
             </div>
@@ -142,6 +138,7 @@
         </div>
     </div>
 
+    <!--Timer Modal-->
     <div class="modal fade" id="timer-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div id="timer-modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -160,11 +157,30 @@
                 <div id="invalid-timer-feedback" class="invisible">
                     Please enter a valid timer.
                 </div>
-                
             </div>
             <div class="modal-footer">
               <button type="button" id="timer-reset-button" class="btn btn-secondary" disabled>Reset</button>
               <button type="button" id="timer-start-button" class="btn btn-primary">Start</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--Playlists Modal-->
+    <div class="modal fade" id="playlist-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="playlist-modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="aboutModalTitle">Playlists</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <button type="button" id="storm-playlist-button" class="btn btn-primary playlist" data-playlist="rain,thunder,wind" data-playlist-volume="80,30,10" data-dismiss="modal"><i class="fas fa-cloud-showers-heavy"></i> Storm</button>
+                    <button type="button" id="campfire-playlist-button" class="btn btn-primary playlist" data-playlist="fire,forest" data-playlist-volume="80, 20" data-dismiss="modal"><i class="fas fa-campground"></i> Campfire</button>
+                    <button type="button" id="summernight-playlist-button" class="btn btn-primary playlist" data-playlist="night,fan" data-playlist-volume="50,30" data-dismiss="modal"><i class="fas fa-sun"></i> Summer Night</button>
+                </div>
             </div>
           </div>
         </div>

@@ -48,13 +48,13 @@ button a:hover {
     top: 1rem;
 }
 
-.presets-controls {
+.playlist-controls {
     position: fixed;
     top: 1.5%;
     right: 1%;
 }
 
-.presets-button {
+.playlist-button {
     color: #FFFFFF;
     font-size: 1.5rem;
     outline: none;
@@ -62,6 +62,16 @@ button a:hover {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
+}
+
+#playlist-modal-dialog {
+  max-width: 12rem;
+}
+
+.playlist {
+  display: block;
+  margin-bottom: 0.5rem;
+  min-width: 10rem;
 }
 
 .dropdown-menu {
