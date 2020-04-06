@@ -132,7 +132,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ><a href="https://github.com/oterocornielkevin/whitenoiseapp">View Source</a></button> <!-- TODO: Insert a link to github -->
+                <a href="https://github.com/oterocornielkevin/whitenoiseapp" class="btn btn-primary">View Source</a>
               </div>
           </div>
         </div>
@@ -143,16 +143,16 @@
         <div id="timer-modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="aboutModalTitle">Set a timer</h5>
+              <h5 class="modal-title" id="timerModalTitle">Set a timer</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
                 <div>
-                    <input type="number" class="timer-input form-control" id="timer-hours" name="" min="00" max="24" value="00"/>
-                    <input type="number" class="timer-input form-control" id="timer-minutes" name="" min="00" max="59" value="00"/>
-                    <input type="number" class="timer-input form-control" id="timer-seconds" name="" min="00" max="59" value="00"/>
+                    <input type="number" class="timer-input form-control" id="timer-hours" name="timer-hours" min="00" max="24" value="00"/>
+                    <input type="number" class="timer-input form-control" id="timer-minutes" name="timer-minutes" min="00" max="59" value="00"/>
+                    <input type="number" class="timer-input form-control" id="timer-seconds" name="timer-seconds" min="00" max="59" value="00"/>
                 </div>
                 <div id="invalid-timer-feedback" class="invisible">
                     Please enter a valid timer.
@@ -170,7 +170,7 @@
         <div id="playlist-modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="aboutModalTitle">Playlists</h5>
+              <h5 class="modal-title" id="playlistModalTitle">Playlists</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
