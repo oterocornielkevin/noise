@@ -1,0 +1,28 @@
+{
+  "name": "noise",
+  "version": "1.0.0",
+  "description": "A white noise generator program. Can be used to aid in concentration by blocking out other ambient noise.",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oterocornielkevin/noise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oterocornielkevin/noise/issues"
+  },
+  "homepage": "https://github.com/oterocornielkevin/noise#readme"
+}
