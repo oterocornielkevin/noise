@@ -3,7 +3,7 @@ $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip({ delay: { show: 400, hide: 100 } });
 
   const soundList = ['rain', 'thunder', 'wind', 'fire', 'forest', 'fan', 'water', 'night', 'whitenoise', 'car', 'train', 'coffeeshop'];
-
+  const media = window.matchMedia('(min-width: 992px');
   const outline = document.querySelector('#moving-outline');
   const outlineLength = outline.getTotalLength();
   outline.style.strokeDasharray = outlineLength;
@@ -265,17 +265,41 @@ $(document).ready(function () {
     outline.style.strokeDashoffset = outlineLength;
   });
 
-  $('input[type=number].timer-input').on('input', function () {
-    if ($(this).val() < 10) {
-      $(this).val('0' + parseInt($(this).val()));
-    }
-    if ($(this).val() > 0) {
-      $('#timer-hours').removeClass('invalid-timer');
-      $('#timer-minutes').removeClass('invalid-timer');
-      $('#timer-seconds').removeClass('invalid-timer');
-      $('#invalid-timer-feedback').addClass('invisible');
-    }
-  });
+  if (media.matches) {
+    $('input[type=number].timer-input').on('input', function () {
+      if ($(this).val() < 10) {
+        $(this).val('0' + parseInt($(this).val()));
+      }
+      if ($(this).val() > 0) {
+        $('#timer-hours').removeClass('invalid-timer');
+        $('#timer-minutes').removeClass('invalid-timer');
+        $('#timer-seconds').removeClass('invalid-timer');
+        $('#invalid-timer-feedback').addClass('invisible');
+      }
+    });
+  }
+
+  // Focus event for mobile version.
+  if (!media.matches) {
+    $('input[type=number].timer-input').focus(function () {
+      if ($(this).val() === '00') {
+        $(this).val('');
+      }
+    });
+    $('input[type=number].timer-input').focusout(function () {
+      if ($(this).val() === '') {
+        $(this).val('00');
+      } else if ($(this).val() > 0 && $(this).val() < 10) {
+        $(this).val('0' + parseInt($(this).val()));
+      } else {
+        if ($(this).val() > 24 && $(this).attr('id') === 'timer-hours') {
+          $(this).val('24');
+        } else if ($(this).val() > 59) {
+          $(this).val('59');
+        }
+      }
+    });
+  }
 
   // Modal Toggles
   $('#about-icon').click(function () {
@@ -284,10 +308,12 @@ $(document).ready(function () {
 
   $('#timer-icon').click(function () {
     $('#timer-modal').modal();
-    // Disables keypresses on the timer inputs
-    $('.timer-input').keypress(function (e) {
-      e.preventDefault();
-    });
+    // Disables keypresses on the timer inputs on desktop mode.
+    if (media.matches) {
+      $('.timer-input').keypress(function (e) {
+        e.preventDefault();
+      });
+    }
   });
 
   $('#playlists-button').click(function () {
