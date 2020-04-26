@@ -1,0 +1,352 @@
+$background: #ff99ff;
+$light-background: #ffccff;
+$transparent-background: rgba(255, 255, 255, 0.1);
+$background-focus: rgba(255, 203, 255, 0.95);
+$icon-blur: rgba(255, 255, 255, 0.75);
+$icon-focus: #FFFFFF;
+$invalid: #dc3545;
+
+
+body {
+    background-color: $background;
+}
+  
+button {
+    a {
+        color: $icon-focus;
+
+        &:hover {
+            color: $icon-focus;
+            text-decoration: none;
+        }
+    }
+}
+  
+.global-controls {
+    margin-left: -95px;
+    padding-top: 5px;
+    padding-bottom: 35px;
+    background-color: $transparent-background;
+}
+  
+.play-pause-container{
+    position: relative;
+    margin-right: 1.25rem;
+}
+  
+.fa-play, .fa-pause {
+      font-size: 1.5rem;
+      position: relative;
+      top: 1.1rem;
+      left: 0.7rem;
+}
+  
+.timer-outline {
+    position: absolute;
+}
+  
+.fa-volume-up, .fa-volume-mute, .fa-stopwatch {
+      font-size: 1.5rem;
+      position: relative;
+      top: 1rem;
+}
+  
+#global-volume {
+      padding-bottom: 0.5rem;
+      background: transparent;
+      position: relative;
+      top: 1rem;
+}
+  
+.playlist-controls {
+      position: fixed;
+      top: 1.5%;
+      right: 1%;
+}
+  
+.playlist-button {
+      color: $icon-focus;
+      font-size: 1.5rem;
+      outline: none;
+      border: none !important;
+      box-shadow: none !important;
+}
+  
+#playlist-modal-dialog {
+    max-width: 12rem;
+}
+  
+.playlist {
+    display: block;
+    margin-bottom: 0.5rem;
+    min-width: 10rem;
+}
+  
+.dropdown-menu {
+      background-color: $light-background;
+      border: none;
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+  
+.dropdown-menu{
+    a {
+        cursor: pointer;
+
+        &:hover {
+            color: $icon-focus;
+            text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        }
+    }
+} 
+  
+#timer-modal-dialog {
+      max-width: 250px!important;
+}
+  
+.modal-dialog {
+    margin: auto;
+}
+  
+.timer-input {
+      display: inline;
+      max-width: 65px;
+      padding-left: 0.5rem;
+}
+  
+.invalid-timer{
+    border-color: $invalid;
+}
+  
+#invalid-timer-feedback {
+    font-size: 80%;
+    color: $invalid;
+}
+  
+.sound-grid {
+      min-height: 80vh
+}
+  
+.container {
+    padding-left: 8%;
+    padding-right: 8%;
+}
+  
+.fas, .far {
+    cursor: pointer;
+    color: $icon-blur;
+
+    &:hover {
+    color: $icon-focus;
+    text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+}
+  
+.sound-icon {
+    border-radius: 30%;
+    padding: 15px;
+    min-width: 60px;
+    background-color: $transparent-background;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+  
+.row{
+    i {
+        font-size: 2rem;
+    }
+} 
+  
+.playing{
+    color: $icon-focus;
+}
+  
+.about {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+}
+  
+.fa-question-circle {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 .125rem .25rem $icon-blur !important;
+    font-size: 1.5rem;
+}
+  
+/**Range Input Styles**/
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 65px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5.1px;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px #010000, 0px 0px 0px #1b0000;
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 2px #000031, 0px 0px 0px #00004b;
+    border: 0px solid #ffffff;
+    height: 15px;
+    width: 16px;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5.15px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.78);
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5.1px;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px #010000, 0px 0px 0px #1b0000;
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 2px #000031, 0px 0px 0px #00004b;
+    border: 0px solid #ffffff;
+    height: 15px;
+    width: 16px;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5.1px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: rgba(242, 242, 242, 0.78);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 1px #010000, 0px 0px 0px #1b0000;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: rgba(255, 255, 255, 0.78);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 0px 0px 1px #010000, 0px 0px 0px #1b0000;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 2px #000031, 0px 0px 0px #00004b;
+    border: 0px solid #ffffff;
+    height: 15px;
+    width: 16px;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+    height: 5.1px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: rgba(255, 255, 255, 0.78);
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: rgba(255, 255, 255, 0.78);
+}
+
+@media only screen and (min-width: 992px){
+    .global-controls {
+        margin-left:-130px;
+        padding-top: 5px;
+        padding-bottom: 35px;
+        background-color: $transparent-background;
+    }
+
+    .fa-volume-up, .fa-volume-mute, .fa-stopwatch {
+        font-size: 2rem;
+        position: relative;
+        top: 1rem;
+    }
+
+    .fa-play, .fa-pause {
+        font-size: 1.6rem;
+        position: relative;
+        top: 0.9rem;
+        left: 0.7rem;
+    }
+    
+    .dropdown-menu{
+        background-color: rgba(255, 203, 255, 0.8);
+        border: none;
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    
+        a {
+            color: $icon-blur;
+            cursor: pointer;
+
+            &:hover {
+                color: $icon-focus;
+                background-color: $background-focus;
+                text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+            }
+        }
+    }
+
+    .container {
+        padding-left: 17%;
+        padding-right: 17%;
+    }
+
+
+    .sound-icon {
+        border-radius: 30%;
+        padding: 20px;
+        min-width: 80px;
+        background-color: $transparent-background;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .row i {
+        font-size: 2.5rem;
+    }
+
+    .about {
+        position: fixed;
+        bottom: 2%;
+        right: 1%;
+    }
+
+    .fa-question-circle {
+        padding: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        font-size: 2rem;
+    }
+
+    input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+        max-width: 100px;
+    }
+}
