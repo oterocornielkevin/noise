@@ -179,6 +179,7 @@ input[type=range] {
     -webkit-appearance: none;
     width: 100%;
     max-width: 65px;
+    background: transparent;
 }
 
 input[type=range]:focus {
