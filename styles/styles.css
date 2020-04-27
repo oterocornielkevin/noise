@@ -165,6 +165,8 @@ button a:hover {
 /**Range Input Styles**/
 input[type=range] {
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   width: 100%;
   max-width: 65px;
   background: transparent;
@@ -195,6 +197,7 @@ input[type=range]::-webkit-slider-thumb {
   background: #ffffff;
   cursor: pointer;
   -webkit-appearance: none;
+          appearance: none;
   margin-top: -5.15px;
 }
 
