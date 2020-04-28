@@ -1,7 +1,5 @@
-$background: #ff99ff;
-$light-background: #ffccff;
+$background: #1A1A1D;
 $transparent-background: rgba(255, 255, 255, 0.1);
-$background-focus: rgba(255, 203, 255, 0.95);
 $icon-blur: rgba(255, 255, 255, 0.75);
 $icon-focus: #FFFFFF;
 $invalid: #dc3545;
@@ -81,23 +79,6 @@ button {
     margin-bottom: 0.5rem;
     min-width: 10rem;
 }
-  
-.dropdown-menu {
-      background-color: $light-background;
-      border: none;
-      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-}
-  
-.dropdown-menu{
-    a {
-        cursor: pointer;
-
-        &:hover {
-            color: $icon-focus;
-            text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-        }
-    }
-} 
   
 #timer-modal-dialog {
       max-width: 250px!important;
@@ -293,23 +274,6 @@ input[type=range]:focus::-ms-fill-upper {
         position: relative;
         top: 0.9rem;
         left: 0.7rem;
-    }
-    
-    .dropdown-menu{
-        background-color: rgba(255, 203, 255, 0.8);
-        border: none;
-        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-    
-        a {
-            color: $icon-blur;
-            cursor: pointer;
-
-            &:hover {
-                color: $icon-focus;
-                background-color: $background-focus;
-                text-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-            }
-        }
     }
 
     .container {

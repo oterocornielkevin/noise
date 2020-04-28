@@ -1,5 +1,5 @@
 body {
-  background-color: #ff99ff;
+  background-color: #1A1A1D;
 }
 
 button a {
@@ -70,22 +70,6 @@ button a:hover {
   display: block;
   margin-bottom: 0.5rem;
   min-width: 10rem;
-}
-
-.dropdown-menu {
-  background-color: #ffccff;
-  border: none;
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-          box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-
-.dropdown-menu a {
-  cursor: pointer;
-}
-
-.dropdown-menu a:hover {
-  color: #FFFFFF;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 #timer-modal-dialog {
@@ -284,21 +268,6 @@ input[type=range]:focus::-ms-fill-upper {
     position: relative;
     top: 0.9rem;
     left: 0.7rem;
-  }
-  .dropdown-menu {
-    background-color: rgba(255, 203, 255, 0.8);
-    border: none;
-    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  }
-  .dropdown-menu a {
-    color: rgba(255, 255, 255, 0.75);
-    cursor: pointer;
-  }
-  .dropdown-menu a:hover {
-    color: #FFFFFF;
-    background-color: rgba(255, 203, 255, 0.95);
-    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   }
   .container {
     padding-left: 17%;
