@@ -39,8 +39,7 @@ $(document).ready(function () {
     outline.style.strokeDashoffset = progress;
     if (timerDuration <= 0) {
       playing = false;
-      $('#play-pause').toggleClass('fa-pause');
-      $('#play-pause').toggleClass('fa-play');
+      $('#play-pause img').attr('src', './svg/play.svg');
 
       const audios = document.querySelectorAll('audio');
       audios.forEach(audio => {
@@ -74,8 +73,7 @@ $(document).ready(function () {
 
     if (!playing) { // Starts a new playlist.
       playing = true;
-      $('#play-pause').toggleClass('fa-pause');
-      $('#play-pause').toggleClass('fa-play');
+      $('#play-pause img').attr('src', './svg/pause.svg');
 
       currentPlaylist = [];
       currentPlaylist.push(sound);
@@ -91,8 +89,7 @@ $(document).ready(function () {
       }
       if (currentPlaylist.length === 0) {
         playing = false;
-        $('#play-pause').toggleClass('fa-pause');
-        $('#play-pause').toggleClass('fa-play');
+        $('#play-pause img').attr('src', './svg/play.svg');
 
         if (timerInterval !== undefined) { // Pause any timers
           clearInterval(timerInterval);
@@ -108,7 +105,7 @@ $(document).ready(function () {
   });
 
   // Global volume display
-  $('.fa-volume-up').click(function () {
+  $('#global-volume-icon').click(function () {
     $(this).toggleClass('playing');
     $('#global-volume').toggleClass('invisible');
   });
@@ -122,20 +119,16 @@ $(document).ready(function () {
     });
 
     if (globalVolume === 0) {
-      $('#global-volume-icon').removeClass('fa-volume-up');
-      $('#global-volume-icon').addClass('fa-volume-mute');
+      $('#global-volume-icon img').attr('src', './svg/mute.svg');
     } else if (globalVolume > 0) {
-      $('#global-volume-icon').addClass('fa-volume-up');
-      $('#global-volume-icon').removeClass('fa-volume-mute');
+      $('#global-volume-icon img').attr('src', './svg/speaker.svg');
     }
   });
 
   // Global Pause and Play
-  $('.fa-play').click(function () {
-    $('#play-pause').toggleClass('fa-pause');
-    $('#play-pause').toggleClass('fa-play');
-
+  $('#play-pause').click(function () {
     if (playing) { // Pause
+      $('#play-pause img').attr('src', './svg/play.svg');
       playing = false;
 
       const audios = document.querySelectorAll('audio');
@@ -144,11 +137,11 @@ $(document).ready(function () {
           playPauseSound(audio);
         }
       });
-
       if (timerInterval !== undefined) { // Pause any timers
         clearInterval(timerInterval);
       }
     } else { // Play
+      $('#play-pause img').attr('src', './svg/pause.svg');
       playing = true;
 
       // If the playlist is empty, it plays a random sound.
@@ -186,8 +179,7 @@ $(document).ready(function () {
       });
     } else {
       playing = true;
-      $('#play-pause').toggleClass('fa-pause');
-      $('#play-pause').toggleClass('fa-play');
+      $('#play-pause img').attr('src', './svg/pause.svg');
     }
 
     currentPlaylist = [];

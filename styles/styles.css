@@ -2,74 +2,74 @@ body {
   background-color: #1A1A1D;
 }
 
-button a {
-  color: #FFFFFF;
-}
-
-button a:hover {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
 .global-controls {
-  margin-left: -95px;
-  padding-top: 5px;
-  padding-bottom: 35px;
+  margin-left: -4rem;
+  padding-top: 0.1rem;
+  padding-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .play-pause-container {
   position: relative;
-  margin-right: 1.25rem;
 }
 
-.fa-play, .fa-pause {
-  font-size: 1.5rem;
+.icon-button {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  padding-top: 0.75rem;
+}
+
+.play-pause {
+  max-height: 3rem;
   position: relative;
-  top: 1.1rem;
-  left: 0.7rem;
 }
 
 .timer-outline {
   position: absolute;
 }
 
-.fa-volume-up, .fa-volume-mute, .fa-stopwatch {
-  font-size: 1.5rem;
-  position: relative;
-  top: 1rem;
+.volume, .stopwatch {
+  height: 1.75rem;
+}
+
+#global-volume-icon {
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+#timer-icon {
+  margin-left: 0.5rem;
+}
+
+.playlist-icon {
+  height: 1.5rem;
 }
 
 #global-volume {
   padding-bottom: 0.5rem;
   background: transparent;
   position: relative;
-  top: 1rem;
+  top: 0.5rem;
+}
+
+#playlists-button {
+  padding-top: 0.5rem;
 }
 
 .playlist-controls {
   position: fixed;
-  top: 1.5%;
-  right: 1%;
-}
-
-.playlist-button {
-  color: #FFFFFF;
-  font-size: 1.5rem;
-  outline: none;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  top: 0.75rem;
+  right: 0.5rem;
 }
 
 #playlist-modal-dialog {
-  max-width: 12rem;
+  max-width: 16rem;
 }
 
-.playlist {
-  display: block;
-  margin-bottom: 0.5rem;
-  min-width: 10rem;
+.playlist img {
+  height: 2.5rem;
 }
 
 #timer-modal-dialog {
@@ -104,20 +104,20 @@ button a:hover {
   padding-right: 8%;
 }
 
-.fas, .far {
+img {
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.75);
+  opacity: 0.8;
 }
 
-.fas:hover, .far:hover {
-  color: #FFFFFF;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+img:hover {
+  opacity: 1;
 }
 
 .sound-icon {
+  max-height: 3.5rem;
+  min-width: 3.5rem;
   border-radius: 30%;
-  padding: 15px;
-  min-width: 60px;
+  padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
   margin-top: 0.5rem;
   margin-bottom: 0.25rem;
@@ -127,23 +127,23 @@ button a:hover {
   font-size: 2rem;
 }
 
-.playing {
-  color: #FFFFFF;
-}
-
 .about {
   position: fixed;
-  bottom: 2%;
-  right: 2%;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
-.fa-question-circle {
-  padding: 10px;
+img.about-icon {
+  max-height: 3rem;
+  padding: 0.75rem;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.75) !important;
-          box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.75) !important;
   font-size: 1.5rem;
+}
+
+.modal-body button {
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
 }
 
 /**Range Input Styles**/
@@ -151,8 +151,8 @@ input[type=range] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  max-width: 4rem;
   width: 100%;
-  max-width: 65px;
   background: transparent;
 }
 
@@ -253,54 +253,66 @@ input[type=range]:focus::-ms-fill-upper {
 
 @media only screen and (min-width: 992px) {
   .global-controls {
-    margin-left: -130px;
-    padding-top: 5px;
-    padding-bottom: 35px;
+    margin-left: -8.125rem;
+    padding-bottom: 0.75rem;
     background-color: rgba(255, 255, 255, 0.1);
   }
-  .fa-volume-up, .fa-volume-mute, .fa-stopwatch {
-    font-size: 2rem;
-    position: relative;
-    top: 1rem;
+  .volume, .stopwatch {
+    height: 2.5rem;
   }
-  .fa-play, .fa-pause {
-    font-size: 1.6rem;
+  #timer-icon {
+    margin-left: 1rem;
+  }
+  #global-volume-icon {
+    margin-right: 1rem;
+  }
+  #play-pause {
+    padding-top: 0.25rem;
+  }
+  .play-pause {
+    max-height: 3rem;
     position: relative;
-    top: 0.9rem;
-    left: 0.7rem;
+  }
+  .icon-button {
+    padding-top: 0.5rem;
+  }
+  .playlist-icon {
+    height: 2rem;
+  }
+  .playlist img {
+    height: 4rem;
   }
   .container {
     padding-left: 17%;
     padding-right: 17%;
   }
   .sound-icon {
+    max-height: 5.5rem;
     border-radius: 30%;
-    padding: 20px;
-    min-width: 80px;
+    padding: 1rem;
+    min-width: 5rem;
     background-color: rgba(255, 255, 255, 0.1);
     margin-top: 0.5rem;
     margin-bottom: 0.25rem;
   }
-  .row i {
-    font-size: 2.5rem;
-  }
   .about {
     position: fixed;
-    bottom: 2%;
-    right: 1%;
-  }
-  .fa-question-circle {
-    padding: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    font-size: 2rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
   }
   input[type=range] {
     -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
     width: 100%;
-    max-width: 100px;
+    max-width: 7.25rem;
+  }
+  #playlist-modal-dialog {
+    max-width: 22rem;
+  }
+  .modal-body button {
+    margin-left: 0.35rem;
+    margin-right: 0.35rem;
   }
 }
 /*# sourceMappingURL=styles.css.map */

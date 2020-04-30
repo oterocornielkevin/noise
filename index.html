@@ -22,8 +22,12 @@
 <body>
     <!-- Play controls -->
     <section class="global-controls text-center shadow-sm">
-            <input id="global-volume" type="range" min="0" max="100" value="100" class="invisible">  
-            <i id="global-volume-icon" class="fas fa-volume-up pl-2 pr-2" data-toggle="tooltip" data-placement="auto" title="Volume"></i>
+            <input id="global-volume" type="range" min="0" max="100" value="100" class="invisible">
+
+            <button id="global-volume-icon" class="btn icon-button mt-1">
+                <img src="./svg/speaker.svg" class="volume" data-toggle="tooltip" data-placement="auto" title="Volume" />
+            </button>
+            
             <div class="play-pause-container d-inline">
                 <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
                     <circle cx="30" cy="30" r="25" stroke="rgba(255, 255, 255, 0.6)" stroke-width="4"></circle>
@@ -31,16 +35,19 @@
                 <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
                     <circle id="moving-outline" class="invisible" cx="30" cy="30" r="25" stroke="#FFFFFF" stroke-width="4"></circle>
                 </svg>
-                <i class="fas fa-play pl-2 pr-3" id="play-pause" data-toggle="tooltip" data-placement="auto" title="Play"></i>
+                <button id="play-pause" class="btn icon-button">
+                    <img  src="./svg/play.svg" class="play-pause pl-2 pr-3" data-toggle="tooltip" data-placement="auto" title="Play" />
+                </button>
             </div>
-            
-            <i class="fas fa-stopwatch" id="timer-icon" data-toggle="tooltip" data-placement="auto" title="Timer"></i>
+            <button id="timer-icon" class="btn icon-button mt-1">
+                <img src="./svg/stopwatch.svg" class="stopwatch" data-toggle="tooltip" data-placement="auto" title="Timer" />
+            </button>
     </section>
     
-    <!-- Presets Menu -->
+    <!-- Playlist Menu -->
     <div class="playlist-controls">
-        <button class="btn playlist-button" type="button" id="playlists-button" data-toggle="tooltip" data-placement="auto" title="Playlists">
-            <i class="fas fa-list-ul"></i>
+        <button class="btn icon-button" type="button" id="playlists-button" data-toggle="tooltip" data-placement="auto" title="Playlists">
+            <img src="./svg/playlist.svg" class="playlist-icon" />
         </button>
     </div>
 
@@ -49,68 +56,80 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 text-center">
-                    <i id='rain-icon' class="fas fa-cloud-rain sound-icon shadow-sm" data-sound="rain" data-toggle="tooltip" data-placement="auto" title="Rain"></i>
+                    <!-- <i id='rain-icon' class="fas fa-cloud-rain sound-icon shadow-sm" data-sound="rain" data-toggle="tooltip" data-placement="auto" title="Rain"></i> -->
+                    <img src="./svg/rain.svg" class="sound-icon" data-sound="rain" data-toggle="tooltip"  data-placement="auto" title="Rain" alt="Rain sound"/>
                     <input id="rain-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-sound="rain">
                     <audio id="rain-audio" src='./sounds/rain.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='thunder-icon' class="fas fa-bolt sound-icon shadow-sm" data-sound="thunder" data-toggle="tooltip" data-placement="auto" title="Thunder"></i>
+                    <!-- <i id='thunder-icon' class="fas fa-bolt sound-icon shadow-sm" data-sound="thunder" data-toggle="tooltip" data-placement="auto" title="Thunder"></i> -->
+                    <img src="./svg/thunder.svg" class="sound-icon" data-sound="thunder" data-toggle="tooltip"  data-placement="auto" title="Thunder" alt="Thunder sound"/>
                     <input id="thunder-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="thunder-audio" src='./sounds/thunder.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='wind-icon' class="fas fa-wind sound-icon shadow-sm" data-sound="wind" data-toggle="tooltip" data-placement="auto" title="Wind"></i>
+                    <!-- <i id='wind-icon' class="fas fa-wind sound-icon shadow-sm" data-sound="wind" data-toggle="tooltip" data-placement="auto" title="Wind"></i> -->
+                    <img src="./svg/wind.svg" class="sound-icon" data-sound="wind" data-toggle="tooltip"  data-placement="auto" title="Wind" alt="Wind sound"/>
                     <input id="wind-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="wind-audio" src='./sounds/wind.mp3' loop></audio>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
-                    <i id='fire-icon' class="fas fa-fire-alt sound-icon shadow-sm" data-sound="fire" data-toggle="tooltip" data-placement="auto" title="Fire"></i>
+                    <!-- <i id='fire-icon' class="fas fa-fire-alt sound-icon shadow-sm" data-sound="fire" data-toggle="tooltip" data-placement="auto" title="Fire"></i> -->
+                    <img src="./svg/fire.svg" class="sound-icon" data-sound="fire" data-toggle="tooltip"  data-placement="auto" title="Fire" alt="Fire sound"/>
                     <input type="range" id="fire-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="fire-audio" src='./sounds/fire.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='forest-icon' class="fas fa-tree sound-icon shadow-sm" data-sound="forest" data-toggle="tooltip" data-placement="auto" title="Forest"></i>
+                    <!-- <i id='forest-icon' class="fas fa-tree sound-icon shadow-sm" data-sound="forest" data-toggle="tooltip" data-placement="auto" title="Forest"></i> -->
+                    <img src="./svg/forest.svg" class="sound-icon" data-sound="forest" data-toggle="tooltip"  data-placement="auto" title="Forest" alt="Forest sound"/>
                     <input type="range" id="forest-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="forest-audio" src='./sounds/forest.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='fan-icon' class="fas fa-fan sound-icon shadow-sm" data-sound="fan" data-toggle="tooltip" data-placement="auto" title="Fan"></i>
+                    <!-- <i id='fan-icon' class="fas fa-fan sound-icon shadow-sm" data-sound="fan" data-toggle="tooltip" data-placement="auto" title="Fan"></i> -->
+                    <img src="./svg/fan.svg" class="sound-icon" data-sound="fan" data-toggle="tooltip"  data-placement="auto" title="Fan" alt="Fan sound"/>
                     <input type="range" id="fan-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="fan-audio" src='./sounds/fan.mp3' loop></audio>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
-                    <i id='water-icon' class="fas fa-water sound-icon shadow-sm" data-sound="water" data-toggle="tooltip" data-placement="auto" title="Beach"></i>
+                    <!-- <i id='water-icon' class="fas fa-water sound-icon shadow-sm" data-sound="water" data-toggle="tooltip" data-placement="auto" title="Beach"></i> -->
+                    <img src="./svg/beach.svg" class="sound-icon" data-sound="water" data-toggle="tooltip"  data-placement="auto" title="Beach" alt="Beach sound"/>
                     <input type="range" id="water-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="water-audio" src='./sounds/beach.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='night-icon' class="fas fa-moon sound-icon shadow-sm" data-sound="night" data-toggle="tooltip" data-placement="auto" title="Night"></i>
+                    <!-- <i id='night-icon' class="fas fa-moon sound-icon shadow-sm" data-sound="night" data-toggle="tooltip" data-placement="auto" title="Night"></i> -->
+                    <img src="./svg/night.svg" class="sound-icon" data-sound="night" data-toggle="tooltip"  data-placement="auto" title="Night" alt="Night sound"/>
                     <input type="range" id="night-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="night-audio" src='./sounds/night.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='whitenoise-icon' class="fas fa-align-center sound-icon shadow-sm" data-sound="whitenoise" data-toggle="tooltip" data-placement="auto" title="White Noise"></i>
+                    <!-- <i id='whitenoise-icon' class="fas fa-align-center sound-icon shadow-sm" data-sound="whitenoise" data-toggle="tooltip" data-placement="auto" title="White Noise"></i> -->
+                    <img src="./svg/whitenoise.svg" class="sound-icon" data-sound="whitenoise" data-toggle="tooltip"  data-placement="auto" title="White Noise" alt="White Noise sound"/>
                     <input type="range" id="whitenoise-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="whitenoise-audio" src='./sounds/whitenoise.mp3' loop></audio>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
-                    <i id='car-icon' class="fas fa-car-side sound-icon shadow-sm" data-sound="car" data-toggle="tooltip" data-placement="auto" title="Car"></i>
+                    <!-- <i id='car-icon' class="fas fa-car-side sound-icon shadow-sm" data-sound="car" data-toggle="tooltip" data-placement="auto" title="Car"></i> -->
+                    <img src="./svg/car.svg" class="sound-icon" data-sound="car" data-toggle="tooltip"  data-placement="auto" title="Car" alt="Car sound"/>
                     <input type="range" id="car-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="car-audio" src='./sounds/car.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='train-icon' class="fas fa-train sound-icon shadow-sm" data-sound="train" data-toggle="tooltip" data-placement="auto" title="Train"></i>
+                    <!-- <i id='train-icon' class="fas fa-train sound-icon shadow-sm" data-sound="train" data-toggle="tooltip" data-placement="auto" title="Train"></i> -->
+                    <img src="./svg/train.svg" class="sound-icon" data-sound="train" data-toggle="tooltip"  data-placement="auto" title="Train" alt="Train sound"/>
                     <input type="range" id="train-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="train-audio" src='./sounds/train.mp3' loop></audio>
                 </div>
                 <div class="col-4 text-center">
-                    <i id='coffeeshop-icon' class="fas fa-mug-hot sound-icon shadow-sm" data-sound="coffeeshop" data-toggle="tooltip" data-placement="auto" title="Coffee Shop"></i>
+                    <!-- <i id='coffeeshop-icon' class="fas fa-mug-hot sound-icon shadow-sm" data-sound="coffeeshop" data-toggle="tooltip" data-placement="auto" title="Coffee Shop"></i> -->
+                    <img src="./svg/coffeeshop.svg" class="sound-icon" data-sound="coffeeshop" data-toggle="tooltip"  data-placement="auto" title="Coffeeshop" alt="Coffeeshop sound"/>
                     <input type="range" id="coffeeshop-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
                     <audio id="coffeeshop-audio" src='./sounds/coffeeshop.mp3' loop></audio>
                 </div>
@@ -120,7 +139,8 @@
 
     <!-- About Icon -->
     <div class="about">
-        <i class="far fa-question-circle" id="about-icon" data-toggle="tooltip" data-target="#about-modal" data-placement="auto" title="About"></i>
+        <img id="about-icon" src="./svg/about.svg" class="about-icon" data-toggle="tooltip" data-target="#about-modal" data-placement="auto" title="About This Site" alt="About this site"/>
+        <!-- <i class="far fa-question-circle" id="about-icon" data-toggle="tooltip" data-target="#about-modal" data-placement="auto" title="About"></i> -->
     </div>
 
     <!--About Modal-->
@@ -187,9 +207,15 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <button type="button" id="storm-playlist-button" class="btn btn-primary playlist" data-playlist="rain,thunder,wind" data-playlist-volume="80,30,10" data-dismiss="modal"><i class="fas fa-cloud-showers-heavy"></i> Storm</button>
-                    <button type="button" id="campfire-playlist-button" class="btn btn-primary playlist" data-playlist="fire,forest" data-playlist-volume="80, 20" data-dismiss="modal"><i class="fas fa-campground"></i> Campfire</button>
-                    <button type="button" id="summernight-playlist-button" class="btn btn-primary playlist" data-playlist="night,fan" data-playlist-volume="50,30" data-dismiss="modal"><i class="fas fa-sun"></i> Summer Night</button>
+                    <button type="button" id="storm-playlist-button" class="btn playlist" data-playlist="rain,thunder,wind" data-playlist-volume="80,30,10" data-dismiss="modal" data-toggle="tooltip" data-placement="auto" title="Rainstorm">
+                        <img src="./svg/rainstorm.svg" alt="Rainstorm sounds" />
+                    </button>
+                    <button type="button" id="campfire-playlist-button" class="btn playlist" data-playlist="fire,forest" data-playlist-volume="80, 20" data-dismiss="modal" data-toggle="tooltip" data-placement="auto" title="Campfire">
+                        <img src="./svg/campfire.svg" alt="Campfire sounds" />
+                    </button>
+                    <button type="button" id="summernight-playlist-button" class="btn playlist" data-playlist="night,fan" data-playlist-volume="50,30" data-dismiss="modal" data-toggle="tooltip" data-placement="auto" title="Summer Night">
+                        <img src="./svg/summernight.svg" alt="Summer Night sounds" />
+                    </button>
                 </div>
             </div>
           </div>
