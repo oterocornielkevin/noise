@@ -31,3 +31,4 @@ A white noise generator program. Can be used to aid in concentration by blocking
 # Credits
   - Created by Kevin Otero
   - Sounds obtained from [Zapsplat.com](https://www.zapsplat.com/)
+  - Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com)
