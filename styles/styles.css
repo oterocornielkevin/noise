@@ -123,6 +123,10 @@ img:hover {
   margin-bottom: 0.25rem;
 }
 
+.playing {
+  opacity: 1;
+}
+
 .row i {
   font-size: 2rem;
 }
