@@ -30,10 +30,16 @@
             
             <div class="play-pause-container d-inline">
                 <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <circle cx="30" cy="30" r="25" stroke="rgba(255, 255, 255, 0.6)" stroke-width="4"></circle>
+                    <circle cx="30" cy="30" r="25" stroke="rgba(3, 238, 254, 0.5)" stroke-width="4"></circle>
                 </svg>
                 <svg class="timer-outline" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <circle id="moving-outline" class="invisible" cx="30" cy="30" r="25" stroke="#FFFFFF" stroke-width="4"></circle>
+                    <defs>
+                        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#01F1FE"/>
+                            <stop offset="100%" stop-color="#76BEFD"/>
+                        </linearGradient>
+                    </defs>
+                    <circle id="moving-outline" class="invisible" cx="30" cy="30" r="25" stroke="url(#linear)" stroke-width="4"></circle>
                 </svg>
                 <button id="play-pause" class="btn icon-button">
                     <img  src="./svg/play.svg" class="play-pause pl-2 pr-3" data-toggle="tooltip" data-placement="auto" title="Play" />
