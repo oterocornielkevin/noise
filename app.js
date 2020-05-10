@@ -156,6 +156,7 @@ $(document).ready(function () {
   // Individual volume controls
   $('input[type=range].sound-volume').on('input', function () {
     const sound = soundList.get($(this).attr('id').substr(0, $(this).attr('id').indexOf('-')));
+    $(this).attr('data-original-title', $(this).val()).tooltip('show');
     sound.volume(($('#global-volume').val() * 0.01) * $('#' + $(this).attr('id').substr(0, $(this).attr('id').indexOf('-')) + '-volume').val() * 0.01);
   });
 
@@ -167,10 +168,12 @@ $(document).ready(function () {
 
   // Global volume Controls
   $('#global-volume').on('input', function () {
-    const globalVolume = $('#global-volume').val() * 0.01;
+    const globalVolume = $(this).val() * 0.01;
     soundList.forEach((sound, name) => {
       sound.volume(globalVolume * $('#' + name + '-volume').val() * 0.01);
     });
+
+    $(this).attr('data-original-title', $(this).val()).tooltip('show');
 
     if (globalVolume === 0) {
       $('#global-volume-icon img').attr('src', './svg/mute.svg');

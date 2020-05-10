@@ -10,6 +10,7 @@
     <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
     <title>Kevin's White Noise App</title>
 
     <!-- CDN for Bootstrap and Font Awesome -->
@@ -22,7 +23,7 @@
 <body>
     <!-- Play controls -->
     <section class="global-controls text-center shadow-sm">
-            <input id="global-volume" type="range" min="0" max="100" value="100" class="invisible">
+            <input id="global-volume" type="range" min="0" max="100" value="100" class="invisible" data-toggle="tooltip" title="100" data-placement="bottom">
 
             <button id="global-volume-icon" class="btn icon-button mt-1">
                 <img src="./svg/speaker.svg" class="volume" data-toggle="tooltip" data-placement="auto" title="Volume" />
@@ -63,57 +64,57 @@
             <div class="row">
                 <div class="col-4 text-center">
                     <img id='rain-icon' src="./svg/rain.svg" class="sound-icon" data-sound="rain" data-toggle="tooltip"  data-placement="auto" title="Rain" alt="Rain sound"/>
-                    <input id="rain-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-sound="rain">
+                    <input id="rain-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='thunder-icon' src="./svg/thunder.svg" class="sound-icon" data-sound="thunder" data-toggle="tooltip"  data-placement="auto" title="Thunder" alt="Thunder sound"/>
-                    <input id="thunder-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input id="thunder-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='wind-icon' src="./svg/wind.svg" class="sound-icon" data-sound="wind" data-toggle="tooltip"  data-placement="auto" title="Wind" alt="Wind sound"/>
-                    <input id="wind-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input id="wind-volume" type="range" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
                     <img id='fire-icon' src="./svg/fire.svg" class="sound-icon" data-sound="fire" data-toggle="tooltip"  data-placement="auto" title="Fire" alt="Fire sound"/>
-                    <input type="range" id="fire-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="fire-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='forest-icon' src="./svg/forest.svg" class="sound-icon" data-sound="forest" data-toggle="tooltip"  data-placement="auto" title="Forest" alt="Forest sound"/>
-                    <input type="range" id="forest-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="forest-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='fan-icon' src="./svg/fan.svg" class="sound-icon" data-sound="fan" data-toggle="tooltip"  data-placement="auto" title="Fan" alt="Fan sound"/>
-                    <input type="range" id="fan-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="fan-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
                     <img id='beach-icon' src="./svg/beach.svg" class="sound-icon" data-sound="beach" data-toggle="tooltip"  data-placement="auto" title="Beach" alt="Beach sound"/>
-                    <input type="range" id="beach-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="beach-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='night-icon' src="./svg/night.svg" class="sound-icon" data-sound="night" data-toggle="tooltip"  data-placement="auto" title="Night" alt="Night sound"/>
-                    <input type="range" id="night-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="night-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img id='whitenoise-icon' src="./svg/whitenoise.svg" class="sound-icon" data-sound="whitenoise" data-toggle="tooltip"  data-placement="auto" title="White Noise" alt="White Noise sound"/>
-                    <input type="range" id="whitenoise-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="whitenoise-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-center">
                     <img src="./svg/car.svg" class="sound-icon" data-sound="car" data-toggle="tooltip"  data-placement="auto" title="Car" alt="Car sound"/>
-                    <input type="range" id="car-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="car-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img src="./svg/train.svg" class="sound-icon" data-sound="train" data-toggle="tooltip"  data-placement="auto" title="Train" alt="Train sound"/>
-                    <input type="range" id="train-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="train-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
                 <div class="col-4 text-center">
                     <img src="./svg/coffeeshop.svg" class="sound-icon" data-sound="coffeeshop" data-toggle="tooltip"  data-placement="auto" title="Coffeeshop" alt="Coffeeshop sound"/>
-                    <input type="range" id="coffeeshop-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume">
+                    <input type="range" id="coffeeshop-volume" min="0" max="100" value="80" class="d-block ml-auto mr-auto my-2 invisible sound-volume" data-toggle="tooltip" title="80" data-placement="bottom">
                 </div>
             </div>
         </div>
