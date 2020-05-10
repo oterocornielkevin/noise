@@ -7,8 +7,7 @@ $(document).ready(function () {
   $('.sound-icon').each(function (index, element) {
     soundList.set($(this).data('sound'), new Howl({
       src: ['./sounds/' + $(this).data('sound') + '.mp3'],
-      loop: true,
-      volume: 0.8
+      loop: true
     }));
   });
 
@@ -41,7 +40,6 @@ $(document).ready(function () {
     } else {
       audio.volume(($('#global-volume').val() * 0.01) * $('#' + sound + '-volume').val() * 0.01);
       audio.play();
-      console.log(audio.volume());
     }
   }
 
