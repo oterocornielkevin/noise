@@ -1,34 +1,51 @@
 $(document).ready(function () {
-  // Initializes tooltips.
+  // Initializes bootstrap tooltips.
   $('[data-toggle="tooltip"]').tooltip({ delay: { show: 400, hide: 100 } });
 
-  const soundList = ['rain', 'thunder', 'wind', 'fire', 'forest', 'fan', 'water', 'night', 'whitenoise', 'car', 'train', 'coffeeshop'];
-  const media = window.matchMedia('(min-width: 992px');
+  // Declare the sound grid object;
+  const soundList = new Map();
+  $('.sound-icon').each(function (index, element) {
+    soundList.set($(this).data('sound'), new Howl({
+      src: ['./sounds/' + $(this).data('sound') + '.mp3'],
+      loop: true,
+      volume: 0.8
+    }));
+  });
+
+  const media = window.matchMedia('(min-width: 992px)');
+
+  // Initializes the timer display variables
   const outline = document.querySelector('#moving-outline');
   const outlineLength = outline.getTotalLength();
   outline.style.strokeDasharray = outlineLength;
   outline.style.strokeDashoffset = outlineLength;
 
+  // Timer variables
+  let timerInterval;
+  let timerSet = false;
   let timerDuration = 0;
   let totalDuration = 0;
-  let timerSet = false;
+
   let playing = false;
-  let currentPlaylist = [];
+  let previousPlaylist = [];
 
-  let timerInterval;
+  // Play / Pause function
+  function playPauseSound (sound) {
+    $('#' + sound + '-volume').toggleClass('invisible');
+    $('#' + sound + '-icon').toggleClass('playing');
 
-  function playPauseSound (audio) {
-    $('#' + audio.id.substr(0, audio.id.indexOf('-')) + '-volume').toggleClass('invisible');
-    $('#' + audio.id.substr(0, audio.id.indexOf('-')) + '-icon').toggleClass('playing');
+    const audio = soundList.get(sound);
 
-    if (audio.paused) {
-      audio.volume = ($('#global-volume').val() * 0.01) * $('#' + audio.id.substr(0, audio.id.indexOf('-')) + '-volume').val() * 0.01;
-      audio.play();
-    } else {
+    if (audio.playing()) {
       audio.pause();
+    } else {
+      audio.volume(($('#global-volume').val() * 0.01) * $('#' + sound + '-volume').val() * 0.01);
+      audio.play();
+      console.log(audio.volume());
     }
   }
 
+  // Update timer function
   function updateTimer () {
     timerDuration = timerDuration - 1000;
     const hours = Math.floor((timerDuration / 3600000));
@@ -41,10 +58,9 @@ $(document).ready(function () {
       playing = false;
       $('#play-pause img').attr('src', './svg/play.svg');
 
-      const audios = document.querySelectorAll('audio');
-      audios.forEach(audio => {
-        if (!audio.paused) {
-          playPauseSound(audio);
+      soundList.forEach(sound => {
+        if (sound.playing()) {
+          sound.pause();
         }
       });
       $('#timer-seconds').val('00');
@@ -65,31 +81,32 @@ $(document).ready(function () {
     }
   }
 
-  // Sound icon event listener
+  // Sound grid pause and play
   $('.sound-icon').click(function () {
-    const sound = $(this).attr('data-sound');
-    const audio = document.querySelector('#' + sound + '-audio');
-    playPauseSound(audio);
+    const sound = $(this).data('sound');
+    playPauseSound(sound);
 
     if (!playing) { // Starts a new playlist.
       playing = true;
       $('#play-pause img').attr('src', './svg/pause.svg');
 
-      currentPlaylist = [];
-      currentPlaylist.push(sound);
-
       if (timerSet) {
         timerInterval = setInterval(updateTimer, 1000);
       }
-    } else { // Playlist is in progress
-      if (audio.paused) {
-        currentPlaylist.splice(currentPlaylist.indexOf(sound), 1);
-      } else {
-        currentPlaylist.push(sound);
-      }
-      if (currentPlaylist.length === 0) {
-        playing = false;
+    } else { // A playlist is in progress.
+      playing = false;
+
+      soundList.forEach(obj => {
+        if (obj.playing()) {
+          playing = true;
+        }
+      });
+
+      if (!playing) {
         $('#play-pause img').attr('src', './svg/play.svg');
+
+        previousPlaylist = [];
+        previousPlaylist.push(sound);
 
         if (timerInterval !== undefined) { // Pause any timers
           clearInterval(timerInterval);
@@ -98,10 +115,50 @@ $(document).ready(function () {
     }
   });
 
+  // Pause and play controls
+  $('#play-pause').click(function () {
+    if (playing) {
+      $('#play-pause img').attr('src', './svg/play.svg');
+      playing = false;
+      previousPlaylist = [];
+
+      soundList.forEach((sound, name) => {
+        if (sound.playing()) {
+          playPauseSound(name);
+          previousPlaylist.push(name);
+        }
+      });
+      if (timerInterval !== undefined) { // Pause any timers
+        clearInterval(timerInterval);
+      }
+    } else {
+      $('#play-pause img').attr('src', './svg/pause.svg');
+      playing = true;
+
+      if (previousPlaylist.length === 0) {
+        const soundIndex = Math.floor(Math.random() * soundList.length);
+        let i = 0;
+        soundList.forEach((sound, name) => {
+          if (i === soundIndex) {
+            playPauseSound(name);
+          }
+          i++;
+        });
+      } else {
+        previousPlaylist.forEach(sound => {
+          playPauseSound(sound);
+        });
+      }
+      if (timerSet) {
+        timerInterval = setInterval(updateTimer, 1000);
+      }
+    }
+  });
+
   // Individual volume controls
   $('input[type=range].sound-volume').on('input', function () {
-    const audio = document.getElementById((this.getAttribute('id').substr(0, this.getAttribute('id').indexOf('-'))) + '-audio');
-    audio.volume = ($('#global-volume').val() * 0.01) * $(this).val() * 0.01;
+    const sound = soundList.get($(this).attr('id').substr(0, $(this).attr('id').indexOf('-')));
+    sound.volume(($('#global-volume').val() * 0.01) * $('#' + $(this).attr('id').substr(0, $(this).attr('id').indexOf('-')) + '-volume').val() * 0.01);
   });
 
   // Global volume display
@@ -110,12 +167,11 @@ $(document).ready(function () {
     $('#global-volume').toggleClass('invisible');
   });
 
-  // Global volume controls
+  // Global volume Controls
   $('#global-volume').on('input', function () {
     const globalVolume = $('#global-volume').val() * 0.01;
-    const sounds = document.querySelectorAll('audio');
-    sounds.forEach(sound => {
-      sound.volume = (($('#' + sound.id.substr(0, sound.id.indexOf('-')) + '-volume').val()) * 0.01) * globalVolume;
+    soundList.forEach((sound, name) => {
+      sound.volume(globalVolume * $('#' + name + '-volume').val() * 0.01);
     });
 
     if (globalVolume === 0) {
@@ -125,82 +181,44 @@ $(document).ready(function () {
     }
   });
 
-  // Global Pause and Play
-  $('#play-pause').click(function () {
-    if (playing) { // Pause
-      $('#play-pause img').attr('src', './svg/play.svg');
-      playing = false;
-
-      const audios = document.querySelectorAll('audio');
-      audios.forEach(audio => {
-        if (!audio.paused) {
-          playPauseSound(audio);
-        }
-      });
-      if (timerInterval !== undefined) { // Pause any timers
-        clearInterval(timerInterval);
-      }
-    } else { // Play
-      $('#play-pause img').attr('src', './svg/pause.svg');
-      playing = true;
-
-      // If the playlist is empty, it plays a random sound.
-      if (currentPlaylist.length === 0) {
-        const soundCount = soundList.length;
-        const soundIndex = Math.floor(Math.random() * soundCount);
-
-        const audio = document.querySelector('#' + soundList[soundIndex] + '-audio');
-        playPauseSound(audio);
-
-        currentPlaylist.push(soundList[soundIndex]);
-      } else { // Resume existing playlist.
-        currentPlaylist.forEach(sound => {
-          const audio = document.querySelector('#' + sound + '-audio');
-          playPauseSound(audio);
-        });
-      }
-
-      if (timerSet) {
-        timerInterval = setInterval(updateTimer, 1000);
-      }
-    }
-  });
-
   // Playlist controls
   $('.playlist').click(function () {
-    const playlist = $(this).attr('data-playlist').split(',');
-    const volumes = $(this).attr('data-playlist-volume').split(',');
+    const playlist = $(this).data('playlist').split(',');
+    const volumes = $(this).data('playlist-volume').split(',');
+    let index = 0;
+    playlist.forEach(sound => {
+      $('#' + sound + '-volume').val(volumes[index]);
+      index++;
+    });
 
-    // Pause any currently playing sounds
-    if (playing) {
-      currentPlaylist.forEach(sound => {
-        const audio = document.querySelector('#' + sound + '-audio');
-        playPauseSound(audio);
-      });
-    } else {
+    soundList.forEach((sound, name) => {
+      if (playlist.includes(name)) {
+        if (!sound.playing()) {
+          $('#' + name + '-volume').toggleClass('invisible');
+          $('#' + name + '-icon').toggleClass('playing');
+        }
+        sound.volume(($('#global-volume').val() * 0.01) * $('#' + name + '-volume').val() * 0.01);
+        sound.play();
+      } else {
+        if (sound.playing()) {
+          $('#' + name + '-volume').toggleClass('invisible');
+          $('#' + name + '-icon').toggleClass('playing');
+        }
+        sound.pause();
+      }
+    });
+
+    if (!playing) {
       playing = true;
       $('#play-pause img').attr('src', './svg/pause.svg');
     }
-
-    currentPlaylist = [];
-
-    // Play each sound in the playlist
-    playlist.forEach(sound => {
-      const audio = document.querySelector('#' + sound + '-audio');
-      playPauseSound(audio);
-
-      currentPlaylist.push(sound);
-
-      audio.volume = (volumes[playlist.indexOf(sound)] * 0.01) * ($('#global-volume').val() * 0.01);
-      $('#' + sound + '-volume').attr('value', volumes[playlist.indexOf(sound)]);
-    });
 
     if (timerSet) {
       timerInterval = setInterval(updateTimer, 1000);
     }
   });
 
-  // Timer controls
+  // Timer Controls
   $('#timer-start-button').click(function () {
     timerDuration = (($('#timer-seconds').val()) * 1000) + (($('#timer-minutes').val()) * 60000) + (($('#timer-hours').val()) * 3600000);
     totalDuration = timerDuration;
@@ -238,7 +256,6 @@ $(document).ready(function () {
       }
     }
   });
-
   // Timer reset controls
   $('#timer-reset-button').click(function () {
     clearInterval(timerInterval);
@@ -257,6 +274,7 @@ $(document).ready(function () {
     outline.style.strokeDashoffset = outlineLength;
   });
 
+  // Focus event for desktop version.
   if (media.matches) {
     $('input[type=number].timer-input').on('input', function () {
       if ($(this).val() < 10) {
@@ -269,10 +287,7 @@ $(document).ready(function () {
         $('#invalid-timer-feedback').addClass('invisible');
       }
     });
-  }
-
-  // Focus event for mobile version.
-  if (!media.matches) {
+  } else if (!media.matches) { // Focus event for mobile version.
     $('input[type=number].timer-input').focus(function () {
       if ($(this).val() === '00') {
         $(this).val('');
@@ -300,8 +315,7 @@ $(document).ready(function () {
 
   $('#timer-icon').click(function () {
     $('#timer-modal').modal();
-    // Disables keypresses on the timer inputs on desktop mode.
-    if (media.matches) {
+    if (media.matches) { // Disables keypresses on the timer inputs on desktop mode.
       $('.timer-input').keypress(function (e) {
         e.preventDefault();
       });
