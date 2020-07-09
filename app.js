@@ -103,9 +103,6 @@ $(document).ready(function () {
       if (!playing) {
         $('#play-pause img').attr('src', './svg/play.svg');
 
-        previousPlaylist = [];
-        previousPlaylist.push(sound);
-
         if (timerInterval !== undefined) { // Pause any timers
           clearInterval(timerInterval);
         }
@@ -134,7 +131,7 @@ $(document).ready(function () {
       playing = true;
 
       if (previousPlaylist.length === 0) {
-        const soundIndex = Math.floor(Math.random() * soundList.length);
+        const soundIndex = Math.floor(Math.random() * soundList.size);
         let i = 0;
         soundList.forEach((sound, name) => {
           if (i === soundIndex) {
