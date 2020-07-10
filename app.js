@@ -56,9 +56,10 @@ $(document).ready(function () {
       playing = false;
       $('#play-pause img').attr('src', './svg/play.svg');
 
-      soundList.forEach(sound => {
+      soundList.forEach((sound, name) => {
         if (sound.playing()) {
-          sound.pause();
+          playPauseSound(name);
+          previousPlaylist.push(name);
         }
       });
       $('#timer-seconds').val('00');
@@ -97,6 +98,7 @@ $(document).ready(function () {
       soundList.forEach(obj => {
         if (obj.playing()) {
           playing = true;
+          $('#' + (obj.src.substr(11, obj.src.length - 4)) + '-volume').toggleClass('invisible');
         }
       });
 
